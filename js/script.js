@@ -61,11 +61,14 @@ playButtonElement.addEventListener('click', function(){
     for (let i=1; i <= 100; i++){
 
         const cell = cellGenerator(i); // create the cells
-        console.log(cell);
 
         cell.addEventListener('click', function(){ // coloring cells by click
+
+            if (cell.classList.contains('clicked')) {
+                return; // if cell contains class 'clicked' function gets stopped so there won't be incremental score
+            }
             
-            if (cell[i] === bombsArrey[i]) {
+            if (cell[i] = bombsArrey[i]) {
                 cell.classList.add('bomb');
                 message = 'hai preso una bomba, hai perso :('
             } else {

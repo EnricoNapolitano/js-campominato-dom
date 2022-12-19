@@ -7,6 +7,16 @@
 }
 
 
+/** Custom Property*/
+:root {
+    /* Colors */
+    --cs-green: #28a745;
+    --cs-red: #e63026;
+    --cs-grey: #c3a9a8;
+    /* Dimension */
+    --cells-x-row: 10;
+}
+
 /** Generics */
 body {
     background-color: crimson;
@@ -36,6 +46,7 @@ button {
 }
 select {
     margin-right: 20px;
+    padding-left: 10px;
     height: 50px;
     border-radius: 5px;
 }
@@ -50,10 +61,10 @@ select {
     display: none;
 }
 .cell.clicked {
-    background-color: #28a745;
+    background-color: var(--cs-green);
 }
 .cell.bomb {
-    background-color: #e63026;
+    background-color: var(--cs-red);
 }
 
 
@@ -88,9 +99,9 @@ header img {
     flex-wrap: wrap;
 }
 .cell {
-    width: calc(100% / 10);
-    height: calc(100% / 10);
-    background-color: #c3a9a8;
+    width: calc(100% / var(--cells-x-row));
+    height: calc(100% / var(--cells-x-row));
+    background-color: var(--cs-grey);
     border: 1px solid white;
     cursor: pointer;
 

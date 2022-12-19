@@ -24,13 +24,30 @@ const generateBombsArray = () => {
   
 //* MAIN FUNCTION
 const startGame = () => {
+    // difficulty level: getting level element and setting cols & rows
+    const level = levelElement.value;
+    let cols = 10;
+    let rows = 10;
+    switch(level){
+        case 'medium':
+            cols = rows = 9;
+            break;
+        case 'hard':
+            cols = rows = 7;
+    }
+    // Setting custom property correct value
+    const rootElement = document.querySelector(':root');
+    rootElement.style.setProperty('--cells-x-row', cols);
+    const totalCells = cols * rows;
+    console.log(totalCells);
+
     score = 0; // starting score each time is clicked on play
     targetElement.innerHTML = ''; // needed to remove message by clicking play again
     gridElement.innerHTML = ''; // needed to remove colored cells by pressing button again
     const bombsArray = generateBombsArray();
     console.log(bombsArray); // console log to see where the bombs are
     let gameOver = false; // flag needed to stop the game when it's the case
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= totalCells; i++) {
       const cell = cellGenerator(i);
       cell.addEventListener('click', function () {
         if (gameOver) {
@@ -63,6 +80,7 @@ const gridElement = document.getElementById('grid');
 const playButtonElement = document.getElementById('play-button');
 const h2Element = document.querySelector('h2');
 const targetElement = document.getElementById('target');
+const levelElement = document.getElementById('level');
   
 //* OTHERS KIND OF VARIABLES
 let score = 0;

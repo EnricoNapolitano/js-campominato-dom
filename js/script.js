@@ -68,17 +68,18 @@ playButtonElement.addEventListener('click', function(){
                 return; // if cell contains class 'clicked' function gets stopped so there won't be incremental score
             }
             
-            if (cell[i] = bombsArrey[i]) {
+            if (bombsArrey.includes(parseInt(cell.textContent))) {
                 cell.classList.add('bomb');
-                message = 'hai preso una bomba, hai perso :('
-            } else {
+                message = 'hai preso una bomba, hai perso :(';
+              } else {
                 cell.classList.add('clicked');
-                message = `hai cliccato la casella n° ${i}`
+                userScore(); // incremental function
+                message = `hai guadagnato ${score} punti!`
             }
+            console.log(cell.textContent);
             console.log(message);
+            console.log(bombsArrey)
             
-            userScore(); // incremental function
-            console.log(score);
         })
         
         gridElement.appendChild(cell); // rendering cells on page

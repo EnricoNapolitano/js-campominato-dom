@@ -1,0 +1,84 @@
+/** Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+
+
+/** Generics */
+body {
+    background-color: crimson;
+}
+h1 {
+    font-size: 20px;
+    letter-spacing: 4px;
+}
+h2 {
+    color: white;
+    font-size: 125px;
+}
+button {
+    padding: 10px 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+/** Utils */
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.d-none {
+    display: none;
+}
+.cell.clicked {
+    background-color: #28a745;
+}
+
+
+/** Header */
+header {
+    height: 120px;
+    background-color: white;
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#game-title {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+header img {
+    width: 100px;
+    padding-bottom: 25px;
+}
+
+
+/** Grid */
+#grid {
+    margin: 50px auto;
+    width: 720px;
+    height: 720px;
+
+    display: flex;
+    flex-wrap: wrap;
+}
+.cell {
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    background-color: #c3a9a8;
+    border: 1px solid white;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

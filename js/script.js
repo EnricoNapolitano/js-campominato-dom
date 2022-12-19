@@ -57,13 +57,13 @@ const startGame = () => {
           return; // if cell contains class 'clicked' function stops so there won't be incremental score
         }
         if (bombsArray.includes(parseInt(cell.textContent))) {
-          cell.classList.add('bomb');
-          message = `hai preso una bomba, hai perso :( <br> hai totalizzato ${score} punti`;
-          gameOver = true;
+            cell.classList.add('bomb');
+            message = `hai preso una bomba, hai perso :( <br> hai totalizzato ${score} punti`;
+            gameOver = true;
         } else {
-          cell.classList.add('clicked');
-          score++;
-          message = `hai guadagnato ${score} punti!`;
+            cell.classList.add('clicked');
+            score++;
+            message = `hai guadagnato ${score} punti!`;
           if (score === 84) {
             message = `complimenti hai vinto, hai totalizzato tutti gli ${score} punti a disposizione!`;
             gameOver = true;

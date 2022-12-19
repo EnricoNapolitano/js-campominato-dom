@@ -64,9 +64,15 @@ const startGame = () => {
             cell.classList.add('clicked');
             score++;
             message = `hai guadagnato ${score} punti!`;
-          if (score === 84) {
-            message = `complimenti hai vinto, hai totalizzato tutti gli ${score} punti a disposizione!`;
-            gameOver = true;
+            if (cols = 10 && score === 84) {
+                message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
+                gameOver = true;
+            } else if (cols = 9 && score === 65) {
+                message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
+                gameOver = true;
+            } else if (cols = 7 && score === 33){
+                message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
+                gameOver = true;
           }
         }
         targetElement.innerHTML = message;

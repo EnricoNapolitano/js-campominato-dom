@@ -50,7 +50,7 @@ playButtonElement.addEventListener('click', function(){
 
     //* 'BOMBS' GENERATOR
     for (let i = 0; i < 16; i++){
-        const random = getRandomNumber(1,100,extractedNumber);
+        const random = getRandomNumber(1,100,bombsArrey);
         bombsArrey.push(random);
     }
     console.log(bombsArrey);

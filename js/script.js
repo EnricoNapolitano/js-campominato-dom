@@ -44,6 +44,8 @@ let message;
 playButtonElement.addEventListener('click', function(){
 
     const removeCTA = h2Element.classList.add('d-none'); // remove Call To Action
+    score = 0; // starting point each time is clicked on play
+    targetElement.innerHTML = ''; // needed to remove message by clicking play again
     gridElement.innerHTML = ''; // needed to remove colored cells by pressing button again
 
     //* 'BOMBS' GENERATOR
@@ -55,7 +57,7 @@ playButtonElement.addEventListener('click', function(){
 
 
     //* GRID'S CELLS
-    let gameOver = false;
+    let gameOver = false; // flag needed to stop the game
     for (let i=1; i <= 100; i++){
 
         const cell = cellGenerator(i); // create the cells

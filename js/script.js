@@ -71,5 +71,6 @@ let message;
 //* PLAY BUTTON EVENT
 playButtonElement.addEventListener('click', function () {
     h2Element.classList.add('d-none'); // remove Call To Action
+    playButtonElement.innerText = 'Play Again';
     startGame();
 });

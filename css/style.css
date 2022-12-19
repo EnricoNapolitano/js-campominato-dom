@@ -18,6 +18,13 @@ h1 {
 h2 {
     color: white;
     font-size: 125px;
+    padding-top: 60px;
+}
+p {
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 8px black;
 }
 button {
     padding: 10px 30px;
@@ -67,7 +74,7 @@ header img {
 
 /** Grid */
 #grid {
-    margin: 50px auto;
+    margin: 50px auto 25px;
     width: 720px;
     height: 720px;
 

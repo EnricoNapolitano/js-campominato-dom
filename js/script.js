@@ -18,9 +18,7 @@ const cellGenerator = (number) => {
     cell.classList.add('cell');
     return cell;
 }
-
 const userScore = () => score++;
-
 const getRandomNumber = (min, max, notValidNumber) => {
     do {
         randomNumber = Math.floor(Math.random()*(max + 1 - min)) + min;
@@ -34,9 +32,8 @@ const getRandomNumber = (min, max, notValidNumber) => {
 const gridElement = document.getElementById('grid');
 const playButtonElement = document.getElementById('play-button');
 const h2Element = document.querySelector('h2');
-
-// const max = 100;
-// const min = 1;
+const targetElement = document.getElementById('target');
+//* OTHERS KIND OF VARIABLES
 let score = 0; // variable to count user score
 const bombsArrey = [];
 let message;
@@ -58,11 +55,15 @@ playButtonElement.addEventListener('click', function(){
 
 
     //* GRID'S CELLS
+    let gameOver = false;
     for (let i=1; i <= 100; i++){
 
         const cell = cellGenerator(i); // create the cells
 
         cell.addEventListener('click', function(){ // coloring cells by click
+            if (gameOver) {
+                return;
+            }
 
             if (cell.classList.contains('clicked')) {
                 return; // if cell contains class 'clicked' function gets stopped so there won't be incremental score
@@ -70,16 +71,21 @@ playButtonElement.addEventListener('click', function(){
             
             if (bombsArrey.includes(parseInt(cell.textContent))) {
                 cell.classList.add('bomb');
-                message = 'hai preso una bomba, hai perso :(';
+                message = `hai preso una bomba, hai perso :( <br> hai totalizzato ${score} punti`;
+                targetElement.innerText = message;
+                gameOver = true;
               } else {
                 cell.classList.add('clicked');
                 userScore(); // incremental function
                 message = `hai guadagnato ${score} punti!`
+                    if (score === 84) {
+                        message = `complimenti hai vinto, hai totalizzato tutti gli ${score} punti a disposizione!`
+                        targetElement.innerHTML = message;
+                        gameOver = true;
+                    }
             }
-            console.log(cell.textContent);
-            console.log(message);
+            targetElement.innerHTML = message;
             console.log(bombsArrey)
-            
         })
         
         gridElement.appendChild(cell); // rendering cells on page

@@ -9,15 +9,6 @@ La partita termina quando il giocatore clicca su una bomba o quando raggiunge il
 (ovvero quando ha rivelato tutte le celle che non sono bombe).
 Al termine della partita il software deve comunicare il punteggio,
 cioè il numero di volte che l’utente ha cliccato su una cella che non era una bomba.
-
-MILESTONE 1
-Prepariamo "qualcosa" per tenere il punteggio dell'utente.
-Quando l'utente clicca su una cella, incrementiamo il punteggio.
-Se riusciamo, facciamo anche in modo da non poter più cliccare la stessa cella.
-
-MILESTONE 2
-Facciamo in modo di generare 16 numeri casuali (tutti diversi) compresi tra 1 e il massimo di caselle disponibili.
-Generiamoli e stampiamo in console per essere certi che siano corretti
 */
 
 //* FUNCTIONS
@@ -28,16 +19,15 @@ const cellGenerator = (number) => {
     return cell;
 }
 
-const userScore = () => {
-    return score++;
-}
+const userScore = () => score++;
 
 const getRandomNumber = (min, max, notValidNumber) => {
     do {
-        randomNumber += Math.floor(Math.random()*(max + 1 - min)) + min;
+        randomNumber = Math.floor(Math.random()*(max + 1 - min)) + min;
     } while (notValidNumber.includes(randomNumber))
     return randomNumber;
 }
+
 
 
 //* DOM'S ELEMENTS
@@ -48,18 +38,25 @@ const h2Element = document.querySelector('h2');
 // const max = 100;
 // const min = 1;
 let score = 0; // variable to count user score
-let isClicked = true;
-let randomNumber = ''; 
-const extractedNumber = [];
+const bombsArrey = [];
+
 
 
 //* PLAY BUTTON EVENT
 playButtonElement.addEventListener('click', function(){
-    
-    const removeCTA = h2Element.classList.add('d-none'); // remove Call To Action
 
+    const removeCTA = h2Element.classList.add('d-none'); // remove Call To Action
     gridElement.innerHTML = ''; // needed to remove colored cells by pressing button again
 
+    //* 'BOMBS' GENERATOR
+    for (let i = 0; i < 16; i++){
+        const random = getRandomNumber(1,100,extractedNumber);
+        bombsArrey.push(random);
+    }
+    console.log(bombsArrey);
+
+
+    //* GRID'S CELLS
     for (let i=1; i <= 100; i++){
 
         const cell = cellGenerator(i); // create the cells
@@ -71,16 +68,14 @@ playButtonElement.addEventListener('click', function(){
             
             userScore(); // incremental function
             console.log(score);
+
+            if (cell === randomNumber[i]) {
+                cell.classList.add('bomb');
+            }
         })
         
         gridElement.appendChild(cell); // rendering cells on page
-
     }
-
-    for (let i = 0; i < 16; i++){
-        getRandomNumber(1,100,extractedNumber);
-    }
-    console.log(randomNumber);
 })
 
 

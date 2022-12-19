@@ -39,6 +39,9 @@ button {
 .cell.clicked {
     background-color: #28a745;
 }
+.cell.clicked.bomb {
+    background-color: crimson;
+}
 
 
 /** Header */

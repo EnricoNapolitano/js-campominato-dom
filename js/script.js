@@ -39,6 +39,7 @@ const h2Element = document.querySelector('h2');
 // const min = 1;
 let score = 0; // variable to count user score
 const bombsArrey = [];
+let message;
 
 
 
@@ -60,18 +61,21 @@ playButtonElement.addEventListener('click', function(){
     for (let i=1; i <= 100; i++){
 
         const cell = cellGenerator(i); // create the cells
+        console.log(cell);
 
         cell.addEventListener('click', function(){ // coloring cells by click
-            cell.classList.add('clicked');
-            const message = `hai cliccato la casella n° ${i}`
+            
+            if (cell[i] === bombsArrey[i]) {
+                cell.classList.add('bomb');
+                message = 'hai preso una bomba, hai perso :('
+            } else {
+                cell.classList.add('clicked');
+                message = `hai cliccato la casella n° ${i}`
+            }
             console.log(message);
             
             userScore(); // incremental function
             console.log(score);
-
-            if (cell === randomNumber[i]) {
-                cell.classList.add('bomb');
-            }
         })
         
         gridElement.appendChild(cell); // rendering cells on page

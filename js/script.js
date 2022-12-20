@@ -24,10 +24,11 @@ const generateBombsArray = () => {
   
 //* MAIN FUNCTION
 const startGame = () => {
-    // difficulty level: getting level element and setting cols & rows
+    // difficulty level: getting level value and setting cols & rows
     const level = levelElement.value;
     let cols = 10;
     let rows = 10;
+    let totalScore = 84;
     min = 1;
     max = 100;
     switch(level){
@@ -35,11 +36,13 @@ const startGame = () => {
             cols = rows = 9;
             min = 1;
             max = 81;
+            totalScore = 65;
             break;
         case 'hard':
             cols = rows = 7;
             min = 1;
             max = 49;
+            totalScore = 33;
     }
     // Setting custom property correct value
     const rootElement = document.querySelector(':root');
@@ -70,16 +73,10 @@ const startGame = () => {
             cell.classList.add('clicked');
             score++;
             message = `hai guadagnato ${score} punti!`;
-            if (cols = 10 && score === 84) {
+            if (score === totalScore) {
                 message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
                 gameOver = true;
-            } else if (cols = 9 && score === 65) {
-                message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
-                gameOver = true;
-            } else if (cols = 7 && score === 33){
-                message = `complimenti hai vinto :) <br> hai totalizzato tutti i punti a disposizione: ${score} punti!`;
-                gameOver = true;
-          }
+            } 
         }
         targetElement.innerHTML = message;
       });

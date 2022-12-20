@@ -16,7 +16,7 @@ const getRandomNumber = (min, max, notValidNumber) => {
 const generateBombsArray = () => {
     const bombsArray = [];
     for (let i = 0; i < 16; i++) {
-      const random = getRandomNumber(1, 100, bombsArray);
+      const random = getRandomNumber(min, max, bombsArray);
       bombsArray.push(random);
     }
     return bombsArray;
@@ -28,12 +28,18 @@ const startGame = () => {
     const level = levelElement.value;
     let cols = 10;
     let rows = 10;
+    min = 1;
+    max = 100;
     switch(level){
         case 'medium':
             cols = rows = 9;
+            min = 1;
+            max = 81;
             break;
         case 'hard':
             cols = rows = 7;
+            min = 1;
+            max = 49;
     }
     // Setting custom property correct value
     const rootElement = document.querySelector(':root');
